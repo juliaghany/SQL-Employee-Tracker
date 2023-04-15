@@ -46,7 +46,7 @@ const viewAllDepartments = async () => {
         const [rows, fields] = await db.query('SELECT id, department_name FROM department');
         console.table(rows);
     } catch (error) {
-        console.error('Failed to fetch employees', error);
+        console.error('Failed to fetch departments', error);
     }
 };
 
