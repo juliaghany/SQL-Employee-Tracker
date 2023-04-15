@@ -29,7 +29,7 @@ const updateEmployeeRole = async () => {
 
 const viewAllRoles = async () => {
     try {
-        const [rows, fields] = await db.query('SELECT id, title FROM roles');
+        const [rows, fields] = await db.query('SELECT roles.id, roles.title, department.department_name, roles.salary FROM roles JOIN department ON roles.department_id = department.id');
         console.table(rows);
     } catch (error) {
         console.error('Failed to fetch roles', error);
@@ -69,7 +69,6 @@ const addDepartment = async () => {
     } else {
         console.log("Failed to add department")
     }
-    // what is the name of your department, console.log Added (department) to database
 };
 
 const quitEmployeeManager = async () => {
