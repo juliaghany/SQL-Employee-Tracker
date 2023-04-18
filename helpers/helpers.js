@@ -2,6 +2,7 @@
 
 const db = require('../db/db.js');
 const inquirer = require('inquirer');
+const cTable = require('console.table');
 
 // import question classes for inquirer prompts
 
