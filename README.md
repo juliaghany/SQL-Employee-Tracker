@@ -8,6 +8,8 @@ Link to demonstration video:
 
 This Node.js command-line application allows users to manage a company's employees using a MySQL database. Users of this application can view, add, and update employees, departments, and roles. Users can remove employees as well. 
 
+I want to acknowledge here that I did not see the requirements for how to log the tables in the command-line until after I finished this assignment. I am going to submit my assignment as it is, but if I need to resubmit it to 
+
 ## Table Of Contents 
 - [Installation](#installation)<br>
 - [Usage](#usage)<br>
@@ -39,11 +41,13 @@ Once you've completed installing the above programs onto your computer, initiali
 
 7. "npm i mysql2" 
 
-8. Once all of the dependencies are installed, you will need to configure your MySQL database. Go [here](https://dev.mysql.com/downloads/mysql/) to install MySQL, and follow the directions listed [here](https://coding-boot-camp.github.io/full-stack/mysql/mysql-installation-guide) for help. 
-   
-9. After installing MySQL, open the terminal window and run the command "mysql -u root -p" to initialize MySQL. Enter your username and password when prompted to log in. 
+8. "npm i console.table --save"  
 
-10. Once you are logged in, run the command "source db/schema.sql" to create the database schema for this application, and "source db/seeds.sql" to populate the database with inital data. 
+9. Once all of the dependencies are installed, you will need to configure your MySQL database. Go [here](https://dev.mysql.com/downloads/mysql/) to install MySQL, and follow the directions listed [here](https://coding-boot-camp.github.io/full-stack/mysql/mysql-installation-guide) for help. 
+   
+10. After installing MySQL, open the terminal window and run the command "mysql -u root -p" to initialize MySQL. Enter your username and password when prompted to log in. 
+
+11. Once you are logged in, run the command "source db/schema.sql" to create the database schema for this application, and "source db/seeds.sql" to populate the database with inital data. 
 
 ## Usage
 
@@ -70,8 +74,6 @@ This application is covered under the [MIT License](https://opensource.org/licen
 - I referenced Module 12 Activity 17 for schema.sql file
 
 - I referenced Module 12 Activity 26 for seeds.sql file
-
-- I referenced this website for use of console.table: https://developer.mozilla.org/en-US/docs/Web/API/console/table
 
 - I referenced this webiste for using INSERT: https://www.w3schools.com/sql/sql_insert.asp#:~:text=INSERT%20INTO%20Syntax,%2C%20column3%2C%20...
 
