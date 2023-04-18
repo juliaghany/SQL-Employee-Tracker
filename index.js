@@ -19,7 +19,8 @@ const connect = async () => {
         
         // call employeeManager() function once connected to the MySQL database
         
-        employeeManager()
+        employeeManager();
+
     } catch (error) {
         console.log(error)
     }
