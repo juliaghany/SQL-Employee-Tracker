@@ -1,4 +1,5 @@
--- using activity 26
+-- insert department_name data into department table 
+
 INSERT INTO
     department (department_name)
 VALUES
@@ -6,6 +7,8 @@ VALUES
     ('Engineering'),
     ('Finance'),
     ('Legal');
+
+-- insert title, salary, and department_id data into roles table
 
 INSERT INTO
     roles (title, salary, department_id)
@@ -18,6 +21,8 @@ VALUES
     ('Accountant', 125000, 3),
     ('Legal Team Lead', 250000, 4),
     ('Lawyer', 190000, 4);
+
+-- insert first_name, last_name, role_id, and manager_id data into employee table 
 
 INSERT INTO
     employee (first_name, last_name, role_id, manager_id)
