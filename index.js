@@ -16,7 +16,9 @@ const connect = async () => {
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
         });
+        
         // call employeeManager() function once connected to the MySQL database
+        
         employeeManager()
     } catch (error) {
         console.log(error)
