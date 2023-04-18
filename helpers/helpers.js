@@ -74,8 +74,8 @@ const removeEmployee = async () => {
         ]);
 
         const [result] = await db.query(`DELETE FROM employee WHERE id = ${answers.employee_name}`);
-        if (result.changedRows >= 1) {
-            console.log(`Removed ${answers.employee_name} from database`);
+        if (result.affectedRows >= 1) {
+            console.log(`Removed employee from database`);
         } else {
             console.log(`Employee not found in database`);
         }
