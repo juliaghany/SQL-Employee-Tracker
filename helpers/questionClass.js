@@ -1,9 +1,13 @@
+// define class called Question 
+
 class Question {
     constructor(name, message) {
         this.name = name;
         this.message = message
     }
 }
+
+// define InputQuestion class that extends the Question class
 
 class InputQuestion extends Question {
     constructor(name, message) {
@@ -12,6 +16,8 @@ class InputQuestion extends Question {
     }
 }
 
+// define ListQuestion class that extends Question class
+
 class ListQuestion extends Question {
     constructor(name, message, choices) {
         super(name, message)
@@ -19,5 +25,7 @@ class ListQuestion extends Question {
         this.choices = choices
     }
 }
+
+// export InputQuestion and ListQuestion to be used in helpers.js file
 
 module.exports = {InputQuestion, ListQuestion}
