@@ -1,8 +1,11 @@
+// import required modules 
+
 const inquirer = require('inquirer');
 const mysql = require('mysql2/promise');
 require('dotenv').config()
 const helpers = require('./helpers/helpers.js');
-var db;
+
+// function that establishes a connection to MySQL database 
 
 const connect = async () => {
     try {
@@ -13,6 +16,7 @@ const connect = async () => {
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
         });
+        // call employeeManager() function once connected to the MySQL database
         employeeManager()
     } catch (error) {
         console.log(error)
@@ -20,6 +24,9 @@ const connect = async () => {
 };
 
 async function employeeManager() {
+    
+    // prompt the user with list of options
+    
     const answers = await inquirer.prompt([{
         type: "list",
         name: "prompt",
@@ -29,10 +36,12 @@ async function employeeManager() {
 
     const selectedOption = answers.prompt
 
+    // perform action based on selected option using a switch statment
+
     switch (selectedOption) {
         case "View All Employees":
-            await helpers.viewAllEmployees(); 
-            break; 
+            await helpers.viewAllEmployees();
+            break;
         case "Add Employee":
             await helpers.addEmployee();
             break;
@@ -58,34 +67,12 @@ async function employeeManager() {
             await helpers.quitEmployeeManager();
             break;
     }
-
+    
+    // call employeeManager() function again to display menu after performing the selected action
+    
     await employeeManager();
 };
 
+// call connect() function to start application 
+
 connect();
-
-// comments below are code that my tutor helped me with, keeping as a reference for now
-
-// my function
-// const connect = async () => {
-//     db = await mysql.createConnection({
-//         host: 'localhost',
-//         port: 3306,
-//         user: process.env.DB_USER,
-//         password: process.env.DB_PASSWORD,
-//         database: process.env.DB_NAME,
-//     });
-//     showEmployeeTracker();
-
-// };
-
-
-// const viewDepartments = async () => {
-//     try {
-//         const [departmentInfo, fields] = await db.query(`Select * from department`);
-//         console.log(departmentInfo)
-        
-//     } catch (error) {
-//         console.log(error)
-//     }
-// };
