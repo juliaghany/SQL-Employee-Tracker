@@ -38,7 +38,7 @@ async function employeeManager() {
 
     const selectedOption = answers.prompt
 
-    // perform action based on selected option using a switch statment
+    // perform action based on selected option using a switch statement
 
     switch (selectedOption) {
         case "View All Employees":
