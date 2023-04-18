@@ -10,7 +10,7 @@ const viewAllEmployees = async () => {
         console.error('Failed to fetch employees', error);
     }
 };
-// add first name, last name, role (choices), manager, console.log Added (employee name) to database 
+
 const addEmployee = async () => {
     try {
         const answers = await inquirer.prompt([
@@ -19,8 +19,9 @@ const addEmployee = async () => {
             new ListQuestion("role", "Please select this employee's role", await getRoles()),
             new ListQuestion("manager_name", "Please select employee's manager", await getEmployees())
         ]);
-        // console.log(answers)
-        const result = await db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)", [answers.first_name, answers.last_name, answers.role, answers.manager_name]);
+
+        const [result] = await db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)", [answers.first_name, answers.last_name, answers.role, answers.manager_name]);
+
         if (result.affectedRows === 1) {
             console.log(`Added ${answers.first_name + " " + answers.last_name} to database`);
         } else {
@@ -39,7 +40,7 @@ const updateEmployeeRole = async () => {
             new ListQuestion("employee_role", "Please select the role you'd like to assign to this employee:", await getRoles())
         ]);
 
-        const result = await db.query(`UPDATE employee SET role_id = ${answers.employee_role} WHERE id = ${answers.employee_name};`);
+        const [result] = await db.query(`UPDATE employee SET role_id = ${answers.employee_role} WHERE id = ${answers.employee_name};`);
         if (result.affectedRows >= 1) {
             console.log(`Updated employee's role`);
         } else {
@@ -58,7 +59,7 @@ const removeEmployee = async () => {
             new ListQuestion("employee_name", "Please select which employee you would like to remove from the database:", await getEmployees())
         ]);
 
-        const result = await db.query(`DELETE FROM employee WHERE id = ${answers.employee_name}`);
+        const [result] = await db.query(`DELETE FROM employee WHERE id = ${answers.employee_name}`);
         if (result.changedRows >= 1) {
             console.log(`Removed ${answers.employee_name} from database`);
         } else {
@@ -79,9 +80,7 @@ const viewAllRoles = async () => {
     }
 };
 
-// NEED TO FINISH 
 const addRole = async () => {
-    // Name of role, salary of role, what department does it belong to, console.log Added (role) to database
     try {
         const departments = await db.query("SELECT id AS value, department_name AS name FROM department")
         const answers = await inquirer.prompt([
@@ -89,7 +88,7 @@ const addRole = async () => {
             new InputQuestion("salary", "Please enter the salary for this role:"),
             new ListQuestion("department", "Please select the department for the role:", departments[0])
         ]);
-        const [result] = await db.query("INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)", [answers.role, answers.salary, answers.department.value]);
+        const [result] = await db.query("INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)", [answers.role, answers.salary, answers.department]);
 
         if (result.affectedRows === 1) {
             console.log(`Added ${answers.role} to database`);
@@ -147,7 +146,7 @@ const getRoles = async () => {
 const getEmployees = async () => {
     try {
         const employee = await db.query("SELECT CONCAT(first_name, ' ', last_name) AS name, id AS value FROM employee")
-        employee[0].push({ names: "None", value: null });
+        employee[0].push({ name: "None", value: null });
         return employee[0];
     } catch (error) {
         console.error("Failed to fetch employees", error);
