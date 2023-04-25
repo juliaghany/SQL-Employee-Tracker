@@ -8,8 +8,6 @@ Link to demonstration video: https://drive.google.com/file/d/12X3lksMWxO1W6ofsnj
 
 This Node.js command-line application allows users to manage a company's employees using a MySQL database. Users of this application can view, add, and update employees, departments, and roles. Users can remove employees as well. 
 
-I want to acknowledge here that I did not see the requirements for how to log the tables in the command-line until after I finished this assignment. I am going to submit my assignment as it is, but if I need to resubmit it to 
-
 ## Table Of Contents 
 - [Installation](#installation)<br>
 - [Usage](#usage)<br>
